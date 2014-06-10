@@ -51,7 +51,7 @@ class AccessManager {
    * @param array $args
    * @return bool
    */
-  public function hasAccess ($action, $args) {
+  public function hasAccess ($action, $args = array()) {
     $prepareAction = $action;
     if (!$this->prepareHandlers[$prepareAction]) {
       $prepareAction = 'default';
