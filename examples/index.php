@@ -15,7 +15,7 @@ if (!$accessManager->hasAccess('someAction')) {
 }
 
 $accessManager->handle('someAction', function ($action, $args) {
-  return $args['arg1'] and $args['arg2'];
+  return array_key_exists('arg1', $args) and array_key_exists('arg2', $args);
 });
 if ($accessManager->hasAccess('someAction', array('arg1' => true))) {
   throw new \Exception('SomeAction not allowed. Arg2 is false.');

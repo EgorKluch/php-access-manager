@@ -53,12 +53,12 @@ class AccessManager {
    */
   public function hasAccess ($action, $args = array()) {
     $prepareAction = $action;
-    if (!$this->prepareHandlers[$prepareAction]) {
+    if (!array_key_exists($prepareAction, $this->prepareHandlers)) {
       $prepareAction = 'default';
     }
     $args = $this->prepareHandlers[$prepareAction]($action, $args);
 
-    if (!$this->handlers[$action]) {
+    if (!array_key_exists($action, $this->handlers)) {
       $action = 'default';
     }
     return $this->handlers[$action]($action, $args);
